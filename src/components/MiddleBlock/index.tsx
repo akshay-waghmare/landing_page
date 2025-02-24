@@ -8,10 +8,11 @@ interface MiddleBlockProps {
   title: string;
   content: string;
   button: string;
+  buttonLink?: string; // Add optional buttonLink prop
   t: TFunction;
 }
 
-const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
+const MiddleBlock = ({ title, content, button, buttonLink = "#", t }: MiddleBlockProps) => {
   const scrollTo = (id: string) => {
     const element = document.getElementById(id) as HTMLDivElement;
     element.scrollIntoView({
@@ -27,9 +28,11 @@ const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
               <h6>{t(title)}</h6>
               <Content>{t(content)}</Content>
               {button && (
-                <Button name="submit" onClick={() => scrollTo("mission")}>
-                  {t(button)}
-                </Button>
+                <a href={buttonLink}>
+                  <Button name="submit" onClick={() => scrollTo("mission")}>
+                    {t(button)}
+                  </Button>
+                </a>
               )}
             </Col>
           </ContentWrapper>

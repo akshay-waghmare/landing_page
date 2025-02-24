@@ -1,6 +1,34 @@
 {
-    "title": "Introduce your product quickly & effectively",
-    "text": "Landy comes with multi-lingual support, all of the content is stored in the JSON files, so that you can manage the texts without having any prior knowledge in developing web applications using React.js.",
-    "button": "Get started"
+  "title": "The Problem with Traditional Customer Support",
+  "text": "Customers expect instant replies, but human support is limited. Hiring & training agents is expensive, and every unanswered query becomes a lost sale. Our AI-powered chatbots provide instant, intelligent, and automated responses—24/7—helping businesses increase efficiency, reduce costs, and improve customer satisfaction.",
+  "problems": [
+    {
+      "icon": "clock",
+      "title": "Slow Responses",
+      "description": "Customers expect instant replies, but human support is limited"
+    },
+    {
+      "icon": "dollar",
+      "title": "High Support Costs",
+      "description": "Hiring & training human agents is expensive"
+    },
+    {
+      "icon": "warning",
+      "title": "Missed Opportunities",
+      "description": "Every unanswered query is a lost sale"
+    }
+  ],
+  "solution": {
+    "title": "The AI Solution",
+    "description": "Our AI-powered chatbots provide instant, intelligent, and automated responses—24/7",
+    "benefits": [
+      "Increase efficiency",
+      "Reduce costs",
+      "Improve customer satisfaction"
+    ]
+  },
+  "button": {
+    "title": "See How It Works",
+    "link": "#demo"
   }
-  
+}

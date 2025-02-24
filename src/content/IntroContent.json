@@ -1,13 +1,19 @@
 {
-  "title": "Landing page template for developers & startups",
-  "text": "Beautifully designed templates using React.js, ant design and styled-components! Save weeks of time and build your landing page in minutes.",
+  "title": "AI Chatbots & Agents That Supercharge Customer Engagement!",
+  "text": "Struggling with slow customer support and missed opportunities? Our AI-powered chatbots automate interactions, increase conversions, and provide 24/7 intelligent assistance—so you never lose a customer again!",
+  "benefits": [
+    "✅ Automate conversations & boost sales",
+    "✅ AI agents that assist customers in real time",
+    "✅ Seamless integration with websites & apps"
+  ],
   "button": [
     {
-      "title": "Explore"
+      "title": "Get Started Now",
+      "color": "#007bff"
     },
     {
-      "title": "Learn more",
-      "color": "#fff"
+      "title": "Request a Free AI Demo",
+      "color": "#6c757d"
     }
   ]
 }

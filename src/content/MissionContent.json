@@ -1,4 +1,32 @@
 {
-  "title": "Ready made sections",
-  "text": "Landy comes with a set of ready to use sections to help you easily create a landing page for your own brand, with all the content your startup desires. In order to replace any dummy elements (text, image, etc..) all you need to do is go to content folder and input your real content."
+  "title": "Our Mission – AI That Works for You",
+  "text": "We believe AI should be accessible, powerful, and easy to integrate into any business. Our mission is to help you automate conversations, streamline operations, and enhance customer engagement—without the complexity.",
+  "steps": [
+    {
+      "number": "1",
+      "title": "Schedule a Free Consultation",
+      "description": "We understand your needs and customize the perfect AI solution.",
+      "icon": "consultation.svg"
+    },
+    {
+      "number": "2",
+      "title": "We Build & Deploy Your AI Solution",
+      "description": "Custom chatbot tailored specifically for your business needs.",
+      "icon": "build-deploy.svg"
+    },
+    {
+      "number": "3",
+      "title": "Scale & Optimize",
+      "description": "AI grows with your business & keeps improving over time.",
+      "icon": "scale-optimize.svg"
+    }
+  ],
+  "visual": {
+    "mainImage": "ai-chatbot-demo.svg",
+    "animation": "timeline-progress.svg"
+  },
+  "button": {
+    "title": "Get Started Today",
+    "link": "#contact"
+  }
 }

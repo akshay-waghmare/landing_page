@@ -1,16 +1,30 @@
 {
-  "title": "Light, fast & responsive",
-  "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
+  "title": "What Makes Our AI Chatbots Different?",
+  "text": "Experience the power of intelligent automation with our cutting-edge AI chatbot solutions, designed to transform your customer interactions.",
   "section": [
     {
-      "title": "Why Antd?",
-      "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
-      "icon": "notes.svg"
+      "title": "Smart AI-Powered Conversations",
+      "content": "Our AI understands customer intent and provides relevant answers, learning and improving with every interaction.",
+      "icon": "smart-chat.svg"
     },
     {
-      "title": "Why styled-components?",
-      "content": "Styled Components gives you total control over your components.",
-      "icon": "notes.svg"
+      "title": "Omnichannel Integration",
+      "content": "Seamlessly deploy your AI chatbot across websites, WhatsApp, Messenger, and more platforms.",
+      "icon": "omni-channel.svg"
+    },
+    {
+      "title": "Customizable & Scalable",
+      "content": "Tailored AI solutions that adapt to your industry needs and grow with your business.",
+      "icon": "customize.svg"
+    },
+    {
+      "title": "Analytics & Insights",
+      "content": "Get real-time data and actionable insights to optimize your customer interactions.",
+      "icon": "analytics.svg"
     }
-  ]
+  ],
+  "button": {
+    "title": "Try Our Chatbot",
+    "link": "#demo"
+  }
 }

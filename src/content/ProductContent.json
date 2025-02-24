@@ -1,4 +1,36 @@
 {
-  "title": "That's about it!",
-  "text": "If you are familiar with React, or SPA frameworks in general, there shouldn't be any confusing parts about this template. if not, you can always reach out to me and I'll try me best to answer your questions."
+  "title": "Take Your Business to the Next Level with AI",
+  "text": "AI chatbots & intelligent automation are the future of business. Don't get left behind—enhance customer engagement, increase efficiency, and boost revenue today!",
+  "section": [
+    {
+      "title": "24/7 Automated Support",
+      "content": "Never miss another customer inquiry with round-the-clock automated interactions.",
+      "icon": "24-7.svg"
+    },
+    {
+      "title": "Scalable Solutions",
+      "content": "Custom AI chatbots that grow with your business and adapt to your needs.",
+      "icon": "scalable.svg"
+    },
+    {
+      "title": "Seamless Integration",
+      "content": "Easy integration with your existing platforms and workflows.",
+      "icon": "integration.svg"
+    },
+    {
+      "title": "Proven Success",
+      "content": "Join hundreds of businesses already benefiting from our AI solutions.",
+      "icon": "success.svg"
+    }
+  ],
+  "button": {
+    "title": "Book a Free AI Consultation",
+    "link": "#contact",
+    "color": "#007bff"
+  },
+  "secondaryButton": {
+    "title": "Request a Free AI Demo",
+    "link": "#demo",
+    "color": "#6c757d"
+  }
 }
