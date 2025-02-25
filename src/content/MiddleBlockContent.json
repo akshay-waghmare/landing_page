@@ -1,19 +1,19 @@
 {
-  "title": "The Problem with Traditional Customer Support",
-  "text": "Customers expect instant replies, but human support is limited. Hiring & training agents is expensive, and every unanswered query becomes a lost sale. Our AI-powered chatbots provide instant, intelligent, and automated responses—24/7—helping businesses increase efficiency, reduce costs, and improve customer satisfaction.",
+  "title": "Transform Your Customer Support with AI-Powered Solutions",
+  "text": "Reduce response times, improve customer satisfaction, and lower costs with our intelligent chatbot and automation platform.",
   "problems": [
     {
-      "icon": "clock",
+      "icon": "clock.svg",
       "title": "Slow Responses",
       "description": "Customers expect instant replies, but human support is limited"
     },
     {
-      "icon": "dollar",
+      "icon": "dollar.svg",
       "title": "High Support Costs",
       "description": "Hiring & training human agents is expensive"
     },
     {
-      "icon": "warning",
+      "icon": "warning.svg",
       "title": "Missed Opportunities",
       "description": "Every unanswered query is a lost sale"
     }
@@ -28,7 +28,7 @@
     ]
   },
   "button": {
-    "title": "See How It Works",
-    "link": "#demo"
+    "title": "Learn More",
+    "link": "#mission"
   }
 }

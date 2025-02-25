@@ -35,6 +35,7 @@ const Home = () => {
         content={MiddleBlockContent.text}
         button={MiddleBlockContent.button.title} // Pass only the button title
         buttonLink={MiddleBlockContent.button.link} // Add buttonLink prop
+        icon="FaReact" // Pass the icon name from react-icons
       />
       <ContentBlock
         direction="left"

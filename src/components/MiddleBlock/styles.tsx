@@ -23,3 +23,9 @@ export const ContentWrapper = styled("div")`
     max-width: 100%;
   }
 `;
+
+export const ButtonWrapper = styled("div")`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+`;
