@@ -1,0 +1,18 @@
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.rcw-widget-container {
+    min-width: 350px;
+}
+
+.rcw-conversation-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.rcw-header {
+    background-color: #2c3e50;
+} 

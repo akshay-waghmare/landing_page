@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Timeline Line -->
+  <line x1="100" y1="100" x2="700" y2="100" stroke="#E9ECEF" stroke-width="4"/>
+  
+  <!-- Step 1 -->
+  <circle cx="100" cy="100" r="20" fill="#007BFF"/>
+  <text x="100" y="150" text-anchor="middle" font-family="Arial" font-size="14" fill="#495057">Step 1</text>
+  <text x="100" y="170" text-anchor="middle" font-family="Arial" font-size="12" fill="#6C757D">Consultation</text>
+  
+  <!-- Progress Line 1 -->
+  <line x1="120" y1="100" x2="300" y2="100" stroke="#007BFF" stroke-width="4"/>
+  
+  <!-- Step 2 -->
+  <circle cx="300" cy="100" r="20" fill="#007BFF"/>
+  <text x="300" y="150" text-anchor="middle" font-family="Arial" font-size="14" fill="#495057">Step 2</text>
+  <text x="300" y="170" text-anchor="middle" font-family="Arial" font-size="12" fill="#6C757D">Development</text>
+  
+  <!-- Progress Line 2 -->
+  <line x1="320" y1="100" x2="500" y2="100" stroke="#007BFF" stroke-width="4"/>
+  
+  <!-- Step 3 -->
+  <circle cx="500" cy="100" r="20" fill="#007BFF"/>
+  <text x="500" y="150" text-anchor="middle" font-family="Arial" font-size="14" fill="#495057">Step 3</text>
+  <text x="500" y="170" text-anchor="middle" font-family="Arial" font-size="12" fill="#6C757D">Optimization</text>
+  
+  <!-- Progress Line 3 (Incomplete) -->
+  <line x1="520" y1="100" x2="700" y2="100" stroke="#E9ECEF" stroke-width="4"/>
+  
+  <!-- Final Step -->
+  <circle cx="700" cy="100" r="20" fill="#E9ECEF"/>
+  <text x="700" y="150" text-anchor="middle" font-family="Arial" font-size="14" fill="#6C757D">Success</text>
+</svg> 

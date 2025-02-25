@@ -57,13 +57,13 @@ const ContentBlock = ({
   const renderButtons = (button: ButtonType | ButtonType[]) => {
     if (Array.isArray(button)) {
       return button.map((item, id) => (
-        <Button key={id} color={item.color} onClick={() => scrollTo("about")}>
+        <Button key={id} color={item.color} onClick={() => scrollTo(item.link?.substring(1) || "about")}>
           {t?.(item.title) || item.title}
         </Button>
       ));
     }
     return (
-      <Button color={button.color} onClick={() => scrollTo("about")}>
+      <Button color={button.color} onClick={() => scrollTo(button.link?.substring(1) || "about")}>
         {t?.(button.title) || button.title}
       </Button>
     );
@@ -81,8 +81,8 @@ const ContentBlock = ({
           <Col lg={11} md={11} sm={12} xs={24}>
             {visual ? (
               <div>
-                <img src={visual.mainImage} alt="main" style={{ width: '100%' }} />
-                <img src={visual.animation} alt="animation" style={{ width: '100%' }} />
+                <img src={`/img/svg/${visual.mainImage}`} alt="main" style={{ width: '100%' }} />
+                <img src={`/img/svg/${visual.animation}`} alt="animation" style={{ width: '100%' }} />
               </div>
             ) : (
               <SvgIcon src={icon} width="100%" height="100%" />

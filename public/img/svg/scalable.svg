@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#f8f9fc"/>
+  <!-- Stacked Blocks -->
+  <rect x="25" y="60" width="50" height="15" rx="2" fill="#18216d"/>
+  <rect x="30" y="45" width="40" height="15" rx="2" fill="#18216d" opacity="0.8"/>
+  <rect x="35" y="30" width="30" height="15" rx="2" fill="#18216d" opacity="0.6"/>
+  <!-- Upward Arrow -->
+  <path d="M75 40 l-5 5 l3 -3 h-8 v-4 h8 l-3 -3 z" fill="#18216d"/>
+  <!-- Scale Lines -->
+  <line x1="20" y1="80" x2="80" y2="80" stroke="#18216d" stroke-width="2"/>
+  <line x1="20" y1="75" x2="20" y2="85" stroke="#18216d" stroke-width="2"/>
+  <line x1="80" y1="75" x2="80" y2="85" stroke="#18216d" stroke-width="2"/>
+</svg> 

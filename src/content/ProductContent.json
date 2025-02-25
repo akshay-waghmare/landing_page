@@ -30,7 +30,7 @@
   },
   "secondaryButton": {
     "title": "Request a Free AI Demo",
-    "link": "#demo",
-    "color": "#6c757d"
+    "link": "#contact",
+    "color": "#007bff"
   }
 }

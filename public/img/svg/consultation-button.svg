@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+  <rect width="70" height="70" rx="35" fill="#007bff"/>
+  <!-- Handshake -->
+  <path d="M25 35 c5 -3 10 -3 15 0 c5 3 10 3 15 0" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Chat Bubbles -->
+  <path d="M20 25 h15 a5 5 0 0 1 5 5 v3 a5 5 0 0 1 -5 5 h-15 a5 5 0 0 1 -5 -5 v-3 a5 5 0 0 1 5 -5" fill="white" opacity="0.9"/>
+  <path d="M35 40 h15 a5 5 0 0 1 5 5 v3 a5 5 0 0 1 -5 5 h-15 a5 5 0 0 1 -5 -5 v-3 a5 5 0 0 1 5 -5" fill="white" opacity="0.7"/>
+</svg> 
