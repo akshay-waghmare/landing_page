@@ -1,0 +1,130 @@
+/* App.css - Perceptra Styles */
+
+:root {
+  --perceptra-primary: #6200EA;
+  --perceptra-secondary: #7C4DFF;
+  --perceptra-light: #B388FF;
+  --perceptra-dark: #4A148C;
+  --perceptra-text: #333333;
+  --perceptra-background: #F8F9FA;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--perceptra-background);
+  color: var(--perceptra-text);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: linear-gradient(135deg, var(--perceptra-primary), var(--perceptra-dark));
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.app-header p {
+  margin: 0.5rem 0 0;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.app-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Feature section styling */
+.feature-section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.feature-section h2 {
+  color: var(--perceptra-primary);
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.feature-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
+/* Demo notice styling */
+.demo-notice {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #FFF8E1;
+  border-left: 4px solid #FFC107;
+  border-radius: 4px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.demo-notice p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #5D4037;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 1.5rem;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+  }
+  
+  .app-content {
+    padding: 1rem;
+  }
+  
+  .feature-section {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .feature-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .feature-section p {
+    font-size: 1rem;
+  }
+  
+  .demo-notice {
+    padding: 0.75rem;
+    margin-top: 1rem;
+  }
+} 

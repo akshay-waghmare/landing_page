@@ -1,25 +1,25 @@
 {
-  "short_name": "Altgoal",
-  "name": "Altgoal - React Template",
+  "short_name": "Perceptra",
+  "name": "Perceptra - AI Assistant",
   "icons": [
     {
-      "src": "img/icons/logo192.png",
+      "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "img/icons/logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "img/icons/perceptra-logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
     },
     {
-      "src": "img/icons/logo512.png",
-      "type": "image/png",
+      "src": "img/perceptra/logo.svg",
+      "type": "image/svg+xml",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#6200EA",
   "background_color": "#ffffff"
 }
