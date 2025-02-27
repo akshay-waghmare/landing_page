@@ -1,0 +1,21 @@
+name = "landing-page-api"
+main = "src/worker/index.ts"
+compatibility_date = "2024-01-01"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "landing_page_leads"
+database_id = "058fbcc6-3f09-4844-9f64-308c926800ec"
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "build"
+
+[env.production]
+vars = { REACT_APP_MOCK_API = "false" }
+
+[env.development]
+vars = { REACT_APP_MOCK_API = "true" } 

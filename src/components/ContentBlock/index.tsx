@@ -31,10 +31,14 @@ const ContentBlock = ({
   t,
 }: ContentBlockProps & { t: any }) => {
   const scrollTo = (id: string) => {
-    const element = document.getElementById(id) as HTMLDivElement;
-    element.scrollIntoView({
-      behavior: "smooth",
-    });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
+    } else {
+      console.warn(`Element with id '${id}' not found`);
+    }
   };
 
   const renderSteps = () => {

@@ -40,17 +40,23 @@ export class RAGChain {
     constructor(apiKey: string) {
         this.mockStore = new MockDocumentStore();
         
-        // Try to initialize with real API if key is provided
-        if (apiKey && apiKey.length > 10) {
+        // Get API key from environment if not provided
+        const finalApiKey = apiKey || process.env.REACT_APP_OPENAI_API_KEY || '';
+        
+        // Force mock mode in certain environments
+        const forceMock = process.env.REACT_APP_MOCK_API === 'true';
+        
+        // Try to initialize with real API if key is provided and not forcing mock
+        if (finalApiKey && finalApiKey.length > 10 && finalApiKey !== 'your_api_key_here' && !forceMock) {
             try {
                 this.model = new OpenAI({
-                    openAIApiKey: apiKey,
+                    openAIApiKey: finalApiKey,
                     modelName: 'gpt-3.5-turbo',
                     temperature: 0.7,
                 });
 
                 const embeddings = new OpenAIEmbeddings({
-                    openAIApiKey: apiKey,
+                    openAIApiKey: finalApiKey,
                 });
 
                 this.vectorStore = new MemoryVectorStore(embeddings);
@@ -70,8 +76,14 @@ export class RAGChain {
                             if (!this.vectorStore) {
                                 return "No documents available.";
                             }
-                            const relevantDocs = await this.vectorStore.similaritySearch(input.question, 3);
-                            return relevantDocs.map((doc: Document) => doc.pageContent).join('\n');
+                            try {
+                                const relevantDocs = await this.vectorStore.similaritySearch(input.question, 3);
+                                return relevantDocs.map((doc: Document) => doc.pageContent).join('\n');
+                            } catch (error) {
+                                console.error("Error in similarity search:", error);
+                                this.usesMock = true;
+                                return "Error retrieving documents.";
+                            }
                         },
                         question: (input: { question: string }) => input.question,
                     },
@@ -97,10 +109,16 @@ export class RAGChain {
         
         // If real store is available, add there too
         if (this.vectorStore && !this.usesMock) {
-            const docs = documents.map(
-                (pageContent) => new Document({ pageContent })
-            );
-            await this.vectorStore.addDocuments(docs);
+            try {
+                const docs = documents.map(
+                    (pageContent) => new Document({ pageContent })
+                );
+                await this.vectorStore.addDocuments(docs);
+            } catch (error) {
+                console.error("Error adding documents to vector store:", error);
+                // Fall back to mock if adding documents fails
+                this.usesMock = true;
+            }
         }
     }
 
@@ -108,10 +126,16 @@ export class RAGChain {
         try {
             // If we have a real chain and we're not using mock, use it
             if (this.chain && !this.usesMock) {
-                const response = await this.chain.invoke({
-                    question: question,
-                });
-                return response;
+                try {
+                    const response = await this.chain.invoke({
+                        question: question,
+                    });
+                    return response;
+                } catch (error) {
+                    console.error('Error in real RAG query:', error);
+                    // Fallback to mock if real query fails
+                    return await this.mockQuery(question);
+                }
             } else {
                 // Use mock implementation
                 return await this.mockQuery(question);
@@ -124,43 +148,48 @@ export class RAGChain {
     }
     
     private async mockQuery(question: string): Promise<string> {
-        // Simulate a delay to make it feel more realistic
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Get relevant documents from mock store
-        const relevantDocs = this.mockStore.search(question);
-        
-        // Simple predefined responses for common questions
-        if (question.toLowerCase().includes('hello') || question.toLowerCase().includes('hi')) {
-            return "Hello! How can I assist you today?";
-        }
-        
-        if (question.toLowerCase().includes('who are you') || question.toLowerCase().includes('what are you')) {
-            return "I'm Perceptra AI, your intelligent assistant. I can help answer questions about our services and capabilities.";
-        }
-        
-        if (question.toLowerCase().includes('help')) {
-            return "I'd be happy to help! You can ask me about Perceptra's AI solutions, our expertise in natural language processing, or how our technology can benefit your business.";
-        }
-        
-        // If we have relevant documents, use them to craft a response
-        if (relevantDocs.length > 0) {
-            const context = relevantDocs.join(" ");
+        try {
+            // Simulate a delay to make it feel more realistic
+            await new Promise(resolve => setTimeout(resolve, 1000));
             
-            // Very simple "answer generation" based on the context
-            if (question.toLowerCase().includes('what') && context.includes('Perceptra')) {
-                return `Perceptra is an AI company that provides innovative solutions for businesses. ${context}`;
+            // Get relevant documents from mock store
+            const relevantDocs = this.mockStore.search(question);
+            
+            // Simple predefined responses for common questions
+            if (question.toLowerCase().includes('hello') || question.toLowerCase().includes('hi')) {
+                return "Hello! How can I assist you today?";
             }
             
-            if (question.toLowerCase().includes('how')) {
-                return `We can help you by leveraging our expertise in artificial intelligence and machine learning. ${context}`;
+            if (question.toLowerCase().includes('who are you') || question.toLowerCase().includes('what are you')) {
+                return "I'm Perceptra AI, your intelligent assistant. I can help answer questions about our services and capabilities.";
             }
             
-            // Generic response using the context
-            return `Based on what I know: ${context}`;
+            if (question.toLowerCase().includes('help')) {
+                return "I'd be happy to help! You can ask me about Perceptra's AI solutions, our expertise in natural language processing, or how our technology can benefit your business.";
+            }
+            
+            // If we have relevant documents, use them to craft a response
+            if (relevantDocs.length > 0) {
+                const context = relevantDocs.join(" ");
+                
+                // Very simple "answer generation" based on the context
+                if (question.toLowerCase().includes('what') && context.includes('Perceptra')) {
+                    return `Perceptra is an AI company that provides innovative solutions for businesses. ${context}`;
+                }
+                
+                if (question.toLowerCase().includes('how')) {
+                    return `We can help you by leveraging our expertise in artificial intelligence and machine learning. ${context}`;
+                }
+                
+                // Generic response using the context
+                return `Based on what I know: ${context}`;
+            }
+            
+            // Fallback response
+            return "I don't have specific information about that, but I'd be happy to connect you with a Perceptra team member who can help answer your question in detail.";
+        } catch (error) {
+            console.error('Error in mock query:', error);
+            return "I'm sorry, I encountered an error while processing your question. Please try again later.";
         }
-        
-        // Fallback response
-        return "I don't have specific information about that, but I'd be happy to connect you with a Perceptra team member who can help answer your question in detail.";
     }
 } 

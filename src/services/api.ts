@@ -11,51 +11,76 @@ export interface LeadResponse {
   message: string;
 }
 
-// You can change this to your actual API endpoint when available
-const API_BASE_URL = 'https://victoryline.live/leads-api';
+interface ApiResponse {
+  status: string;
+  message: string;
+  id: string;
+}
+
+// Get the API base URL from environment variables
+const API_URL = process.env.REACT_APP_API_URL || 'https://landing-page-api.your-worker.workers.dev';
 
 // Development mode detection
 const IS_DEV = process.env.NODE_ENV === 'development';
+// Check if we should use mock API
+const USE_MOCK_API = process.env.REACT_APP_MOCK_API === 'true';
 
 export const submitLead = async (data: LeadData): Promise<LeadResponse> => {
   try {
-    console.log('Submitting lead data:', data);
+    console.log('Starting form submission...', { data });
+    console.log('Environment:', {
+      isDev: IS_DEV,
+      mockAPI: USE_MOCK_API,
+      apiURL: API_URL
+    });
 
-    // In development, if mock mode is enabled, return a fake success response
-    if (IS_DEV && process.env.REACT_APP_MOCK_API === 'true') {
-      console.log('Using mock API response in development mode');
+    // Only use mock response if explicitly enabled
+    if (USE_MOCK_API === true) {
+      console.log('Mock API is enabled, returning mock response');
       return getMockResponse(data);
     }
 
-    // Send JSON data directly to match backend expectations
-    const response = await fetch(`${API_BASE_URL}/add-lead`, {
+    console.log('Sending request to API...', {
+      url: API_URL,
+      data: data
+    });
+
+    // Send data to API
+    const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Origin': window.location.origin,
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data),
-      mode: 'cors',
+      body: JSON.stringify(data)
+    });
+
+    console.log('Received response:', {
+      status: response.status,
+      ok: response.ok,
+      statusText: response.statusText
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('API Error Response:', response.status, errorText);
-      throw new Error(`HTTP error! status: ${response.status} - ${errorText || 'Unknown error'}`);
+      const errorData = await response.json() as { message?: string };
+      throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
     }
 
-    const jsonResponse = await response.json();
-    console.log('API Response:', jsonResponse);
+    const jsonResponse = await response.json() as ApiResponse;
+    console.log('Parsed API Response:', jsonResponse);
     
     return {
-      lead_id: jsonResponse.lead_id,
+      lead_id: Date.parse(jsonResponse.id),
       message: jsonResponse.message
     };
   } catch (error) {
-    console.error('API Error Details:', error);
+    console.error('API Error Details:', {
+      error,
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined
+    });
     
-    // If we have a connection refusal error in development mode, use mock response
-    if (IS_DEV && error instanceof Error && 
+    // Only use mock response if explicitly enabled and there's a connection error
+    if (USE_MOCK_API === true && error instanceof Error && 
         (error.message.includes('ERR_CONNECTION_REFUSED') || 
          error.message.includes('Failed to fetch'))) {
       console.warn('API server unreachable, using fallback response');

@@ -1,2 +1,273 @@
-<!-- Remove or comment out the Landy text -->
-<!-- <h1 class="landy-header-text">Landy</h1> --> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/img/perceptra/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#6200EA" />
+    <meta
+      name="description"
+      content="Perceptra is an AI-powered intelligent assistant designed to help businesses with natural language processing."
+    />
+    <meta
+      name="keywords"
+      content="Perceptra, AI, artificial intelligence, machine learning, natural language processing, chatbot, assistant"
+    />
+    <meta property="og:title" content="Perceptra - AI Assistant" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://perceptra.ai/" />
+    <meta property="og:description"
+      content="Perceptra is an AI-powered intelligent assistant designed to help businesses with natural language processing." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:locale" content="en_EN" />
+    <meta property="og:site_name" content="Perceptra" />
+    <meta property="og:url" content="https://perceptra.ai/" />
+    <meta property="twitter:title" content="Perceptra - AI Assistant" />
+    <meta property="twitter:description"
+      content="Perceptra is an AI-powered intelligent assistant designed to help businesses with natural language processing." />
+    <meta property="twitter:site" content="https://perceptra.ai/" />
+    <meta property="twitter:card" content="summary" />
+    
+    <!-- Script for SPA routing on Cloudflare Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages or Cloudflare Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Perceptra - AI Assistant</title>
+    <style>
+      /* Ensure the chatbot is visible */
+      .chatbot-container {
+        position: fixed !important;
+        bottom: 30px !important;
+        right: 30px !important;
+        z-index: 999999 !important;
+        display: block !important;
+        pointer-events: auto !important;
+      }
+      
+      .chat-toggle-button {
+        width: 70px !important;
+        height: 70px !important;
+        border-radius: 50% !important;
+        background-color: #6200EA !important;
+        color: white !important;
+        border: none !important;
+        box-shadow: 0 4px 20px rgba(98, 0, 234, 0.5) !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        z-index: 1000000 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* Ensure the sender area is visible */
+      .rcw-sender {
+        border-top: 1px solid #e5e5e5 !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 10px !important;
+        background-color: white !important;
+        min-height: 45px !important;
+        max-height: 200px !important;
+        overflow: visible !important;
+      }
+      
+      /* Ensure the input field is visible */
+      .rcw-new-message {
+        border-radius: 20px !important;
+        border: 1px solid #e5e5e5 !important;
+        padding: 12px !important;
+        flex: 1 !important;
+        display: block !important;
+        visibility: visible !important;
+        min-height: 20px !important;
+      }
+      
+      /* Ensure the send button is visible */
+      .rcw-send {
+        background-color: #6200EA !important;
+        color: white !important;
+        border-radius: 50% !important;
+        width: 30px !important;
+        height: 30px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: 10px !important;
+        cursor: pointer !important;
+        visibility: visible !important;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    
+    <!-- Script to ensure chatbot is visible -->
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // Function to check and fix chatbot visibility
+        function ensureChatbotVisible() {
+          console.log('Checking chatbot visibility');
+          
+          // Try to find the chatbot container
+          const chatbotContainer = document.querySelector('.chatbot-container');
+          if (chatbotContainer) {
+            console.log('Chatbot container found, ensuring visibility');
+            chatbotContainer.style.position = 'fixed';
+            chatbotContainer.style.bottom = '30px';
+            chatbotContainer.style.right = '30px';
+            chatbotContainer.style.zIndex = '999999';
+            chatbotContainer.style.display = 'block';
+            chatbotContainer.style.pointerEvents = 'auto';
+            
+            // Try to find the chat button
+            const chatButton = document.querySelector('.chat-toggle-button');
+            if (chatButton) {
+              console.log('Chat button found, ensuring visibility');
+              chatButton.style.width = '70px';
+              chatButton.style.height = '70px';
+              chatButton.style.borderRadius = '50%';
+              chatButton.style.backgroundColor = '#6200EA';
+              chatButton.style.color = 'white';
+              chatButton.style.border = 'none';
+              chatButton.style.boxShadow = '0 4px 20px rgba(98, 0, 234, 0.5)';
+              chatButton.style.cursor = 'pointer';
+              chatButton.style.display = 'flex';
+              chatButton.style.alignItems = 'center';
+              chatButton.style.justifyContent = 'center';
+              chatButton.style.position = 'relative';
+              chatButton.style.zIndex = '1000000';
+              chatButton.style.opacity = '1';
+              chatButton.style.visibility = 'visible';
+            } else {
+              console.warn('Chat button not found');
+            }
+            
+            // Fix chat input elements if they exist
+            fixChatInputElements();
+          } else {
+            console.warn('Chatbot container not found');
+          }
+        }
+        
+        // Function to fix chat input elements
+        function fixChatInputElements() {
+          // Fix the sender area
+          const senderArea = document.querySelector('.rcw-sender');
+          if (senderArea) {
+            console.log('Found sender area, fixing styles');
+            senderArea.style.display = 'flex';
+            senderArea.style.alignItems = 'center';
+            senderArea.style.padding = '10px';
+            senderArea.style.backgroundColor = 'white';
+            senderArea.style.minHeight = '45px';
+            senderArea.style.maxHeight = '200px';
+            senderArea.style.overflow = 'visible';
+            senderArea.style.borderTop = '1px solid #e5e5e5';
+          }
+          
+          // Fix the input field
+          const inputField = document.querySelector('.rcw-new-message');
+          if (inputField) {
+            console.log('Found input field, fixing styles');
+            inputField.style.borderRadius = '20px';
+            inputField.style.border = '1px solid #e5e5e5';
+            inputField.style.padding = '12px';
+            inputField.style.flex = '1';
+            inputField.style.display = 'block';
+            inputField.style.visibility = 'visible';
+            inputField.style.minHeight = '20px';
+          }
+          
+          // Fix the send button
+          const sendButton = document.querySelector('.rcw-send');
+          if (sendButton) {
+            console.log('Found send button, fixing styles');
+            sendButton.style.backgroundColor = '#6200EA';
+            sendButton.style.color = 'white';
+            sendButton.style.borderRadius = '50%';
+            sendButton.style.width = '30px';
+            sendButton.style.height = '30px';
+            sendButton.style.display = 'flex';
+            sendButton.style.alignItems = 'center';
+            sendButton.style.justifyContent = 'center';
+            sendButton.style.marginLeft = '10px';
+            sendButton.style.cursor = 'pointer';
+            sendButton.style.visibility = 'visible';
+          }
+        }
+        
+        // Run immediately and then every second for 10 seconds
+        ensureChatbotVisible();
+        let count = 0;
+        const interval = setInterval(function() {
+          ensureChatbotVisible();
+          count++;
+          if (count >= 10) {
+            clearInterval(interval);
+          }
+        }, 1000);
+        
+        // Also set up a mutation observer to detect when the chat widget is opened
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+              // Check if any of the added nodes is the chat widget
+              for (let i = 0; i < mutation.addedNodes.length; i++) {
+                const node = mutation.addedNodes[i];
+                if (node.nodeType === 1 && (
+                    node.classList.contains('rcw-widget-container') || 
+                    node.querySelector('.rcw-widget-container')
+                )) {
+                  console.log('Chat widget detected, fixing input elements');
+                  // Give it a moment to fully render
+                  setTimeout(fixChatInputElements, 300);
+                  break;
+                }
+              }
+            }
+          });
+        });
+        
+        // Start observing the document body for changes
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+    </script>
+  </body>
+</html>

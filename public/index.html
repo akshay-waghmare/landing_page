@@ -27,6 +27,24 @@
       content="Perceptra is an AI-powered intelligent assistant designed to help businesses with natural language processing." />
     <meta property="twitter:site" content="https://perceptra.ai/" />
     <meta property="twitter:card" content="summary" />
+    
+    <!-- Script for SPA routing on Cloudflare Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages or Cloudflare Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
